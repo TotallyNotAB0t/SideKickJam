@@ -9,7 +9,8 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private float smoothSpeed = 0.03f;
     [SerializeField] private Vector3 offset = new Vector3(4f, 3f, 0);
-
+    
+    //TODO limiter camera
     void LateUpdate()
     {
         Vector3 desiredPosition;
