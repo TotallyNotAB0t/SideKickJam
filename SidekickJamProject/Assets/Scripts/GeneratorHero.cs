@@ -11,7 +11,7 @@ public class GeneratorHero : MonoBehaviour
         }
     }
 
-    private void InstantiateHero()
+    private static void InstantiateHero()
     {
         var newHero = new GameObject();
         newHero.name = "NewHero";
