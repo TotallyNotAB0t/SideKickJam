@@ -10,13 +10,17 @@ public class QuestGenerator : MonoBehaviour
         }
     }
 
-    private static void GenerateQuest()
+    public static GameObject GenerateQuest()
     {
         var newQuest = new GameObject();
         newQuest.name = "NewQuest";
         newQuest.AddComponent<Quest>();
-        newQuest.GetComponent<Quest>().SetBonus(Random.Range(0, 4));
-        newQuest.GetComponent<Quest>().SetMalus(Random.Range(0, 3));
-        newQuest.GetComponent<Quest>().SetQuestName("PlaceHolderName");
+        var questVals = newQuest.GetComponent<Quest>();
+        
+        questVals.bonus = Random.Range(0, 4);
+        questVals.malus = Random.Range(0, 3);
+        questVals.questName = "Yeet the dragon";
+
+        return newQuest;
     }
 }
