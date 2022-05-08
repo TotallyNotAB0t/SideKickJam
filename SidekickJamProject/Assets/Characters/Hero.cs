@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
-    private string characterName;
-    private int level;
-    private string characterClass;
-    private int lives;
+    private string characterName, characterClass, fluff;
+    private int level, lives, force, intelligence, speed, reputation;
+    private bool ego;
 
     public void Randomize(Vector3 pos)
     {
