@@ -7,9 +7,9 @@ public class Hero : MonoBehaviour
     private string characterClass;
     private int lives;
 
-    public void Randomize()
+    public void Randomize(Vector3 pos)
     {
-        transform.position = new Vector2(Random.Range(0f, 10f), 0);
+        transform.position = pos;
         name = "placeHolderName";
         level = Random.Range(1, 51);
         characterClass = "placeholderclass";
