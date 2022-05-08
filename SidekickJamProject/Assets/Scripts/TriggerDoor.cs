@@ -30,7 +30,7 @@ public class TriggerDoor : MonoBehaviour
     {
         if (!onDoor) return;
         //TODO penser pour la localisation
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (this.transform.position == doorLink.Item1) player.transform.position = doorLink.Item2;
             else player.transform.position = doorLink.Item1;

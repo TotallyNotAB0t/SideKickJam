@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class TriggerMap : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject canvas;
+    
     void OnTriggerEnter2D(Collider2D col)
     {
-        player.GetComponent<SpriteRenderer>().enabled = true;
+        canvas.gameObject.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        player.GetComponent<SpriteRenderer>().enabled = false;
+        canvas.gameObject.SetActive(false);
     }
 }
