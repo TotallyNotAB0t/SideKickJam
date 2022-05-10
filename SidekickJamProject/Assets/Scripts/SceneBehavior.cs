@@ -5,6 +5,6 @@ public class SceneBehavior : MonoBehaviour
 {
     public static void GoToScene(string nameScene)
     {
-        SceneManager.LoadScene(nameScene);
+        SceneManager.LoadScene(nameScene, LoadSceneMode.Additive);
     }
 }
