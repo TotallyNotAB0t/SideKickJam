@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: e5da1c7ee3745984e89aab3edd6dd6c1
+guid: 33cdf01ffc899f544aa10981e91f0792
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - heroJsonFile: {fileID: 4900000, guid: 8cfd0c92c0ab466e911d5772d14b4785, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

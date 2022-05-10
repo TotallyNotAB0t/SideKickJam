@@ -2884,7 +2884,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1275189345}
-  - component: {fileID: 1275189346}
   - component: {fileID: 1275189347}
   m_Layer: 0
   m_Name: GameManager
@@ -2908,22 +2907,6 @@ Transform:
   m_Father: {fileID: 97934027}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1275189346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275189344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39c6bc488ce741449dc19f3e4dbf802, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  difficulty: 0
-  foodPrompt: {fileID: 39430965}
-  moneyPrompt: {fileID: 279455310}
-  looksPrompt: {fileID: 160018955}
 --- !u!114 &1275189347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3061,9 +3044,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369445484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adbc6b43dd345d4448231e37b9fec535, type: 3}
+  m_Script: {fileID: 11500000, guid: e39c6bc488ce741449dc19f3e4dbf802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 0
+  foodPrompt: {fileID: 39430965}
+  moneyPrompt: {fileID: 279455310}
+  looksPrompt: {fileID: 160018955}
 --- !u!1 &1371698067
 GameObject:
   m_ObjectHideFlags: 0

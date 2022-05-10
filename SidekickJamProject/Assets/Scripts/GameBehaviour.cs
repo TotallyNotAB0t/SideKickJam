@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -65,14 +66,23 @@ public class GameBehaviour : MonoBehaviour
         reputation = 2;
         alive = true;
         GameObject.FindWithTag("MainCamera").SetActive(true);
+        
+        using (StreamReader reader = new StreamReader("Assets/Resources/heroes.json"))
+        {
+            Hero.heroValues =JsonUtility.FromJson<Hero.heroJson>(reader.ReadToEnd());
+        }
+        Debug.Log(Hero.heroValues.name[0]);
     }
 
     private void Update()
     {
+        //Check LoseCon
         if (money < 0 || food < 0 || looks < 0)
         {
             alive = false;
         }
+        
+        //UI stat
         if(foodPrompt.activeSelf)
             foodPrompt.GetComponent<TextMeshProUGUI>().text = $"Food : {food}";
         if (moneyPrompt.activeSelf)
@@ -80,6 +90,7 @@ public class GameBehaviour : MonoBehaviour
         if (looksPrompt.activeSelf)
             looksPrompt.GetComponent<TextMeshProUGUI>().text = $"Looks : {looks}";
 
+        //Next Day
         if (onBed)
         {
             if (Input.GetKeyDown(KeyCode.E))

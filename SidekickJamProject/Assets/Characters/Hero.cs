@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,12 +9,14 @@ public class Hero : MonoBehaviour
     public string characterName, characterClass, fluff;
     public int level, lives, force, intelligence, speed;
     public bool ego;
+    public TextAsset heroJsonFile;
+    public static heroJson heroValues;
 
     public void Randomize(Vector3 pos)
     {
         transform.position = pos;
         
-        name = "placeHolderName";
+        characterName = heroValues.name[Random.Range(0, heroValues.name.Length - 1)];
         fluff = "fluff";
         lives = Random.Range(5, 30);
         
@@ -37,6 +40,12 @@ public class Hero : MonoBehaviour
         {
             level = Random.Range(12, 20);
         }
+        
+        /*
+         * rep +- 5
+         * distribuer les points aleatoirement
+         * classe en fct de meilleure stat
+         */
     }
 
     void instantiateHeroClass(int rep)
@@ -58,5 +67,14 @@ public class Hero : MonoBehaviour
     public void GetAttributes()
     {
         Debug.Log($"name : {characterName}, class : {characterClass}, level : {level}, lives : {lives}");
+    }
+    
+    
+    [Serializable]
+    public class heroJson
+    {
+        public string[] name;
+        public string[] surname;
+        public string[] fluff;
     }
 }

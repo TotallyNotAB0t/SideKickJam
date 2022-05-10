@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class Quest : MonoBehaviour
@@ -11,12 +13,21 @@ public class Quest : MonoBehaviour
     public bool active = true;
     public string questName;
     public List<Hero> heroes = new();
+    
+    private List<string> proba = new();
+    
+    [SerializeField] private TextAsset questJson;
+    [CanBeNull] private JsonManager.questJson quest;
+    
+    private void Start()
+    {
+        //quest = JsonUtility.FromJson<JsonManager.questJson>(questJson.text);
+    }
 
     public void Randomize(int rep)
     {
+        initProba();
         bonusType = getQuestType();
-        
-        // TODO C'EST DEGUEULASSE, A OPTI QUAND J'AI PAS LE CERVEAU EN COMPOTE
         malusType = getQuestType();
         while (malusType == bonusType)
         {
@@ -29,29 +40,37 @@ public class Quest : MonoBehaviour
         
         //En fonction de la reputation et du bonusType, la base de textes est pas la meme
         questName = "Yeet the dragon";
+        
     }
     
-    // TODO A GRANDEMENT AMELIORER
-    public static string getQuestType()
+    public string getQuestType()
     {
-        switch (Random.Range(0, 9))
+        if (bonusType != null)
         {
-            case 0:
-            case 1:
-            case 2:
-                return "food";
-            case 3:
-            case 4:
-            case 5:
-                return "money";
-            case 6:
-            case 7:
-            case 8:
-                return "looks";
-            case 9:
-                return "reputation";
+            proba.RemoveAll(alreadyBonus);
         }
+        return proba[Random.Range(0, proba.Count - 1)];
+    }
 
-        return "";
+    private bool alreadyBonus(String s)
+    {
+        return s.EndsWith(bonusType);
+    }
+    
+    /*
+     * this is ugly af
+     */
+    private void initProba()
+    {
+        proba.Add("food");
+        proba.Add("food");
+        proba.Add("food");
+        proba.Add("money");
+        proba.Add("money");
+        proba.Add("money");
+        proba.Add("looks");
+        proba.Add("looks");
+        proba.Add("looks");
+        proba.Add("reputation");
     }
 }
