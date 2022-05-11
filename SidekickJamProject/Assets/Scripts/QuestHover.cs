@@ -11,10 +11,15 @@ public class QuestHover : MonoBehaviour
     [SerializeField] private GameObject mainCam;
     [SerializeField] private GameObject counterCam;
 
+    //A deplacer ailleurs : nullreference parce que chaque quete possède quest hover, on a qu'une camera
     private void Start()
     {
         mainCam = GameObject.FindWithTag("MainCamera");
         counterCam = GameObject.FindWithTag("SecondaryCamera");
+        if (counterCam)
+        {
+            counterCam.SetActive(false);
+        }
     }
 
     private void Update()
@@ -43,10 +48,14 @@ public class QuestHover : MonoBehaviour
         canGrow = false;
     }
 
+    //Nullreference ?
     private void OnMouseUp()
     {
         mainCam.gameObject.SetActive(true);
-        counterCam.gameObject.SetActive(false);
+        if (counterCam)
+        {
+            counterCam.gameObject.SetActive(false);
+        }
         
         GetComponent<Quest>().heroes.Add(GameObject.FindWithTag("Hero").GetComponent<Hero>());
     }

@@ -7,4 +7,9 @@ public class SceneBehavior : MonoBehaviour
     {
         SceneManager.LoadScene(nameScene, LoadSceneMode.Additive);
     }
+
+    public static void ExitMenu()
+    {
+        SceneManager.LoadScene("MapScene");
+    }
 }
