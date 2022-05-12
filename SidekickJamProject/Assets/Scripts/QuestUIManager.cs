@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -21,6 +22,13 @@ public class QuestUIManager : MonoBehaviour
     // TODO faire la deletion de l'objet selectionné (ptet dans le HoverQuest) puis recharger une quete a l'endroit de l'objet cliqué
     private void Start()
     {
+        using (StreamReader reader = new StreamReader("Assets/Resources/quests.json"))
+        {
+            Quest.questsNames = JsonUtility.FromJson<Quest.questJson>(reader.ReadToEnd());
+        }
+        
+        Debug.Log(Quest.questsNames);
+        
         GenerateCards();
     }
 

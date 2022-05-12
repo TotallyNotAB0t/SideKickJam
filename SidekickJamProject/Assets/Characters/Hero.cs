@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class Hero : MonoBehaviour
 {
     public string characterName, characterClass, fluff;
-    public int level, lives, force, intelligence, speed;
+    public int level, lives, str, intel, spe;
     public bool ego;
     public TextAsset heroJsonFile;
     public static heroJson heroValues;
@@ -16,7 +16,7 @@ public class Hero : MonoBehaviour
     {
         transform.position = pos;
         
-        characterName = heroValues.name[Random.Range(0, heroValues.name.Length - 1)];
+        characterName = $"{heroValues.surname[Random.Range(0, heroValues.surname.Length)]} {heroValues.name[Random.Range(0, heroValues.name.Length)]}";
         fluff = "fluff";
         lives = Random.Range(5, 30);
         
@@ -26,11 +26,14 @@ public class Hero : MonoBehaviour
 
         // Reputation linked generation
         var rep = GameBehaviour.Reputation;
+        instantiateHeroClass(rep);
+    }
 
+    void instantiateHeroClass(int rep)
+    {
         if (rep < 15) // EARLY
         {
             level = Random.Range(1, 5);
-            instantiateHeroClass(rep);
         }
         else if (rep < 30) //MID
         {
@@ -41,32 +44,31 @@ public class Hero : MonoBehaviour
             level = Random.Range(12, 20);
         }
         
-        /*
-         * rep +- 5
-         * distribuer les points aleatoirement
-         * classe en fct de meilleure stat
-         */
-    }
+        str = level + Random.Range(-1,rep/3 + 1);
+        intel = level + Random.Range(-1,rep/3 + 1);
+        spe = level + Random.Range(-1,rep/3 + 1);
 
-    void instantiateHeroClass(int rep)
-    {
-        switch (Random.Range(1, 3))
+        var tmp = Math.Max(str, Math.Max(intel, spe));
+        if (str == tmp)
         {
-            case 1:
-                characterClass = "Warrior";
-                break;
-            case 2:
-                characterClass = "Mage";
-                break;
-            case 3:
-                characterClass = "Ranger";
-                break;
+            characterClass = "Warrior";
+        }
+        if (intel == tmp)
+        {
+            characterClass = "Mage";
+        }
+        if (spe == tmp)
+        {
+            characterClass = "Ranger";
         }
     }
 
     public void GetAttributes()
     {
-        Debug.Log($"name : {characterName}, class : {characterClass}, level : {level}, lives : {lives}");
+        Debug.Log($"name : {characterName}, class : {characterClass}," +
+                  $" level : {level}," +
+                  $" life : {lives}" +
+                  $" STR : {str} INT : {intel} SPE : {spe}");
     }
     
     

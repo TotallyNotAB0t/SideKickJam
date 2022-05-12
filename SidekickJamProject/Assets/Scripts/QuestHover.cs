@@ -8,8 +8,8 @@ public class QuestHover : MonoBehaviour
     private bool canGrow, canShrink;
     
     
-    [SerializeField] private GameObject mainCam;
-    [SerializeField] private GameObject counterCam;
+    private GameObject mainCam;
+    private GameObject counterCam;
 
     //A deplacer ailleurs : nullreference parce que chaque quete possède quest hover, on a qu'une camera
     private void Start()
@@ -58,6 +58,7 @@ public class QuestHover : MonoBehaviour
         }
         
         GetComponent<Quest>().heroes.Add(GameObject.FindWithTag("Hero").GetComponent<Hero>());
+        GameBehaviour.AddLoggedQuests(this.GetComponent<Quest>());
     }
     
     private void Grow()
@@ -75,6 +76,4 @@ public class QuestHover : MonoBehaviour
             transform.localScale -= new Vector3(0.5f, 0.5f, 0.5f);
         }
     }
-
-    
 }

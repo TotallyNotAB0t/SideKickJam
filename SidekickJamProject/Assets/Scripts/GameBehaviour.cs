@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -59,6 +60,11 @@ public class GameBehaviour : MonoBehaviour
 
     void Start()
     {
+        using (StreamReader reader = new StreamReader("Assets/Resources/heroes.json"))
+        {
+            Hero.heroValues =JsonUtility.FromJson<Hero.heroJson>(reader.ReadToEnd());
+        }
+
         days = 1;
         food = 5;
         money = 4;
@@ -66,12 +72,6 @@ public class GameBehaviour : MonoBehaviour
         reputation = 2;
         alive = true;
         GameObject.FindWithTag("MainCamera").SetActive(true);
-        
-        using (StreamReader reader = new StreamReader("Assets/Resources/heroes.json"))
-        {
-            Hero.heroValues =JsonUtility.FromJson<Hero.heroJson>(reader.ReadToEnd());
-        }
-        Debug.Log(Hero.heroValues.name[0]);
     }
 
     private void Update()
@@ -106,11 +106,34 @@ public class GameBehaviour : MonoBehaviour
         }
     }
     
-    static void AddLoggedQuests(Quest quest)
+    public static void AddLoggedQuests(Quest quest)
     {
         loggedQuests.Add(quest);
-        //TODO Logique de heros a ajouter
-        reputation++;
+        if (CheckQuestCompatibility(quest))
+        {
+            reputation++;
+        }
+        else reputation--;
+    }
+
+    private static bool CheckQuestCompatibility(Quest quest)
+    {
+        var hero = quest.heroes[0];
+
+        if (quest.thresholdStat == "str")
+        {
+            return hero.str >= quest.threshold;
+        }
+        if (quest.thresholdStat == "intel")
+        {
+            return hero.intel >= quest.threshold;
+        }
+        if (quest.thresholdStat == "spe")
+        {
+            return hero.spe >= quest.threshold;
+        }
+
+        return true;
     }
 
     public static void advanceQuests()
@@ -155,6 +178,10 @@ public class GameBehaviour : MonoBehaviour
                 }
             }
         }
+
+        loggedQuests = loggedQuests.Where(el => el.active).ToList();
+        
+        //incrémenter le score I guess
     }
     
     

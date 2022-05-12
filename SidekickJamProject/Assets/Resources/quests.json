@@ -1,14 +1,75 @@
 ﻿{
-  "earlyfood": [],
-  "earlymoney": [],
-  "earlylooks": [],
-  "earlyreputation": [],
-  "midfood": [],
-  "midmoney": [],
-  "midlooks": [],
-  "midreputation": [],
-  "latefood": [],
-  "latemoney": [],
-  "latelooks": [],
-  "latereputation": []
+  "earlyfood": [
+    "Collect 3 apples from the orchard",
+    "Exorcise the ghost of the school's garden",
+    "Collect 10 alligator pears",
+    "Cook me a meal",
+    "Hunt 2 deers",
+    "Catch 5 rabbits"
+  ],
+  "earlymoney": [
+    "Catch the guy who stole my wallet",
+    "Go get my loan at the bank",
+    "Find cash in the streets",
+    "Give 10 gold Coin",
+    "Sell this to the market",
+    "Break pots to find rupee",
+    "Clean Aimanouwel's armor"
+  ],
+  "earlylooks": [
+    "Kill 3 rats in the cellar",
+    "Unclog the toilets",
+    "Mow the loan",
+    "Water the flowers",
+    "Find a logo for the shop",
+    "Install fences around the shop",
+    ""
+  ],
+  "earlyreputation": [
+    "Glue ads in the streets",
+    "Invite your friends for a meal",
+    "Deliver these crates to the poor",
+    "Stop the drunk weirdo in the city",
+    "Give out flyers in the city",
+    "Create a football team"
+  ],
+  "midfood": [
+    "Kill the alpha rabbit",
+    "Bring back a souvenir from the pork eating contest"
+  ],
+  "midmoney": [
+    "Teach algebra to angels",
+    "Beat vampires at a blood pudding eating game",
+    "Make a shady charity event",
+    "Find out if the sea is actually mermaid tears",
+    "Decipher the code for the Lich's lair"
+  ],
+  "midlooks": [
+    "Clean the rooftiles",
+    "Bring the pelt of a draconic bear",
+    "Tend to the giant butterfly cocoon",
+    "Prevent the imps from ravagin the crops"
+  ],
+  "midreputation": [
+    "Kill the holy beaver",
+    "Form a Guild",
+    "Stop the ninja pirates from being relevant again",
+    "Expropriate the loud neighbour"
+  ],
+  "latefood": [
+    "Hunt a whale, bare handed",
+    "Heal the forest of Midvald"
+  ],
+  "latemoney": [
+    "Beat Gzeiurhvbua at poker",
+    "Crate a vaudeville"
+  ],
+  "latelooks": [
+    "Bring a familiy of frogs for the pond",
+    "Steal the sand witches cauldron"
+  ],
+  "latereputation": [
+    "Ally yousely with the mage's guild",
+    "Team up with Aimanouwel"
+  ]
 }
