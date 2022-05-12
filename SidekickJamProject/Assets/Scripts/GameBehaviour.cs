@@ -102,6 +102,9 @@ public class GameBehaviour : MonoBehaviour
                 Debug.Log($"Day : {Days}, Food : {Food} , Money : {Money}, Looks : {Looks}");
 
                 advanceQuests();
+                //Stocker days, food, money, reputation, looks,
+                //tableau des quetes données à des heros, "score" (pas encore implémenté),
+                // tableau des quetes que l'on peut passer aux heros (questUIManager.availableQuests)
             }
         }
     }
