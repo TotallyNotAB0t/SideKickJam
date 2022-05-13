@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class GameBehaviour : MonoBehaviour
 {

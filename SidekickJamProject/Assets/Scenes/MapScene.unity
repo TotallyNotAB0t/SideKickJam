@@ -2920,7 +2920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initPos: {fileID: 624943517}
-  targetPos: {fileID: 1856142621}
+  counterPos: {fileID: 1856142621}
   heroSprite: {fileID: 21300000, guid: eb695c2617ccb4542a3e9cbb7b03bc3c, type: 3}
   heroSpeed: 1.44
 --- !u!1 &1369445484
@@ -3993,7 +3993,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856142621}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.9, y: 0, z: 0}
+  m_LocalPosition: {x: -31.58, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
