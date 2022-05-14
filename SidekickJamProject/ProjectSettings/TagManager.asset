@@ -8,6 +8,8 @@ TagManager:
   - SecondaryCamera
   - Hero
   - DayCount
+  - BubbleParent
+  - BubbleText
   layers:
   - Default
   - TransparentFX

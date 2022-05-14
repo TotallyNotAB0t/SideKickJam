@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GameBehaviour : MonoBehaviour
 {
+    private static Camera camCounter;
     private static int food, money, looks, reputation = 1, days;
     public static int Food
     {
@@ -59,6 +60,7 @@ public class GameBehaviour : MonoBehaviour
 
     void Start()
     {
+        camCounter = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         using (StreamReader reader = new StreamReader("Assets/Resources/heroes.json"))
         {
             Hero.heroValues =JsonUtility.FromJson<Hero.heroJson>(reader.ReadToEnd());
@@ -203,17 +205,22 @@ public class GameBehaviour : MonoBehaviour
 
     private static void displayUI()
     {
-        GameObject.FindWithTag("DayCount").GetComponent<TextMeshProUGUI>().text = days.ToString();
+        if (camCounter.isActiveAndEnabled)
+        {
+            GameObject.FindWithTag("DayCount").GetComponent<TextMeshProUGUI>().text = days.ToString();
+        }
     }
     
     
     private void OnTriggerEnter2D(Collider2D col)
     {
+        TriggerInteractions.ShowBubble("Sleep");
         onBed = true;
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
+        TriggerInteractions.RemoveBubble();
         onBed = false;
     }
 }

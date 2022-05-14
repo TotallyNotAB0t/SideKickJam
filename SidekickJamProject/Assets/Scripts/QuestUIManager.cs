@@ -35,7 +35,6 @@ public class QuestUIManager : MonoBehaviour
     private void Update()
     {
         DisplayQuest();
-
         if (isClicked)
         {
             updateAvailableQuests();
