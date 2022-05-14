@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class GameBehaviour : MonoBehaviour
 {
+    public static int maxHero;
     private static Camera camCounter;
     private static int food, money, looks, reputation = 1, days;
     public static int Food
@@ -63,6 +64,7 @@ public class GameBehaviour : MonoBehaviour
 
     void Start()
     {
+        maxHero = Random.Range(2, 5);
         camCounter = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         using (StreamReader reader = new StreamReader("Assets/Resources/heroes.json"))
         {
@@ -108,6 +110,8 @@ public class GameBehaviour : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                GeneratorHero.ResetHeroCount();
+                maxHero = Random.Range(2, 5);
                 Days++;
                 Food--;
                 Money--;
