@@ -24,8 +24,15 @@ public class CounterAccess : MonoBehaviour
         if (!onCounter) return;
         if (Input.GetKeyDown(KeyCode.E))
         {
-            mainCam.gameObject.SetActive(false);
-            counterCamera.SetActive(true);
+            if (!GeneratorHero.isCounterOpen)
+            {
+                GeneratorHero.isCounterOpen = true;
+            }
+            else
+            {
+                mainCam.gameObject.SetActive(false);
+                counterCamera.SetActive(true);
+            }
         }
     }
 }

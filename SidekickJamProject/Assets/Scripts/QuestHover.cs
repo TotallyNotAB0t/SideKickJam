@@ -3,7 +3,7 @@ using UnityEngine;
 public class QuestHover : MonoBehaviour
 {
     private bool canGrow, canShrink;
-    
+    public static bool questSent;
     
     public static GameObject mainCam;
     public static GameObject counterCam;
@@ -36,13 +36,14 @@ public class QuestHover : MonoBehaviour
     
     private void OnMouseUp()
     {
+        questSent = true;
         mainCam.SetActive(true);
         counterCam.SetActive(false);
         
         GetComponent<Quest>().heroes.Add(GameObject.FindWithTag("Hero").GetComponent<Hero>());
         GameBehaviour.AddLoggedQuests(this.GetComponent<Quest>());
         QuestUIManager.collectClickedQuest(this.gameObject);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
     
     private void Grow()

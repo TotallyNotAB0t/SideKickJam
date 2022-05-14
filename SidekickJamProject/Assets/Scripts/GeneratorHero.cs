@@ -7,17 +7,24 @@ public class GeneratorHero : MonoBehaviour
     [SerializeField, Range(0.1f, 10f)] private float heroSpeed;
     private GameObject actualHero;
     private bool onCounter, onExit;
-    
+    public static bool isCounterOpen;
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !actualHero)
+        if (isCounterOpen && !actualHero )
         {
             InstantiateHero();
         }
-        MoveHero();
-        
-        MoveHeroBackwards();
-        
+
+        if (isCounterOpen)
+        {
+            MoveHero();
+        }
+
+        if (QuestHover.questSent)
+        {
+            MoveHeroBackwards();
+        }
         ResetNewHero();
     }
 
@@ -47,6 +54,7 @@ public class GeneratorHero : MonoBehaviour
     private void ResetNewHero()
     {
         if (!onExit) return;
+        QuestHover.questSent = false;
         onCounter = false;
         onExit = false;
         Destroy(actualHero);
