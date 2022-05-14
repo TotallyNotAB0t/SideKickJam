@@ -5,6 +5,7 @@ public class GeneratorHero : MonoBehaviour
     [SerializeField] private GameObject initPos, counterPos;
     [SerializeField, Range(0.1f, 10f)] private float heroSpeed;
     [SerializeField] private Sprite mageSprite, warriorSprite, rangerSprite;
+    [SerializeField] private AudioSource audio;
     private GameObject actualHero;
     private bool onCounter, onExit;
     public static bool isCounterOpen;
@@ -86,5 +87,7 @@ public class GeneratorHero : MonoBehaviour
 
         newHero.GetComponent<SpriteRenderer>().sortingOrder = 3;
         actualHero = newHero;
+        
+        audio.Play();
     }
 }

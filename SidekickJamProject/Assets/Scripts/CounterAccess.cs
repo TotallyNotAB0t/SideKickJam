@@ -15,7 +15,7 @@ public class CounterAccess : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         onCounter = true;
-        TriggerInteractions.bubbleParent.transform.localPosition = new Vector3(1.70f, -1.22f, 0f);
+        //TriggerInteractions.bubbleParent.transform.localPosition = new Vector3(1.70f, -1.22f, 0f);
         TriggerInteractions.ShowBubble("Open Shop");
     }
 

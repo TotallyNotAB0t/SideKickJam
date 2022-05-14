@@ -16,7 +16,7 @@ public class TriggerDoor : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         onDoor = true;
-        TriggerInteractions.bubbleParent.transform.localPosition = new Vector3(0f, 2f, 0f);
+        //TriggerInteractions.bubbleParent.transform.localPosition = new Vector3(0f, 2f, 0f);
         TriggerInteractions.ShowBubble("Take door");
     }
 

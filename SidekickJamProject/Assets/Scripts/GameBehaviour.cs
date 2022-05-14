@@ -121,9 +121,6 @@ public class GameBehaviour : MonoBehaviour
                     menuUI.SetActive(true);
                     winUI.SetActive(true);
                 }
-                //Stocker days, food, money, reputation, looks,
-                //tableau des quetes données à des heros, "score" (pas encore implémenté),
-                // tableau des quetes que l'on peut passer aux heros (questUIManager.availableQuests)
             }
         }
     }
