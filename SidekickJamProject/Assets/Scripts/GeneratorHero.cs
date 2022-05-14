@@ -8,6 +8,7 @@ public class GeneratorHero : MonoBehaviour
     private GameObject actualHero;
     private bool onCounter, onExit;
     public static bool isCounterOpen;
+    public GetHeroInformation info;
 
     private void Update()
     {
@@ -72,5 +73,6 @@ public class GeneratorHero : MonoBehaviour
         newHero.GetComponent<Hero>().Randomize(initPos.transform.position);
         newHero.GetComponent<Hero>().GetAttributes();
         actualHero = newHero;
+        info.GetInfo(newHero.GetComponent<Hero>());
     }
 }

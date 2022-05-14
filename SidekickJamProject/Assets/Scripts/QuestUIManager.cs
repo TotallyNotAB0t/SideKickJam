@@ -15,8 +15,8 @@ public class QuestUIManager : MonoBehaviour
     [SerializeField] private GameObject questPrefab;
     public static GameObject currentQuest;
     public static GameObject nullQuest;
-    
-    
+
+
     private static GameObject tmp;
     private static bool isClicked;
 
