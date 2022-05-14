@@ -5079,7 +5079,7 @@ MonoBehaviour:
   initPos: {fileID: 624943517}
   counterPos: {fileID: 1856142621}
   heroSprite: {fileID: 21300000, guid: eb695c2617ccb4542a3e9cbb7b03bc3c, type: 3}
-  heroSpeed: 10
+  heroSpeed: 1.44
   info: {fileID: 697128257}
 --- !u!1 &1282313193
 GameObject:
@@ -5827,7 +5827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84dfc26524b782e4a913f28b227ac9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.1
 --- !u!50 &1493616478
 Rigidbody2D:
   serializedVersion: 4

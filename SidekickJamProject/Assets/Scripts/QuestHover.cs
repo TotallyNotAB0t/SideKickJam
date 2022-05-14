@@ -1,10 +1,12 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class QuestHover : MonoBehaviour
 {
     private bool canGrow, canShrink;
     public static bool questSent;
+    private TextMeshPro thresholdInt;
 
     public static GameObject mainCam;
     public static GameObject counterCam;
@@ -25,9 +27,25 @@ public class QuestHover : MonoBehaviour
             Grow();
         }
     }
+    
+    private void ShowThresholds()
+    {
+        thresholdInt = new GameObject().AddComponent<TextMeshPro>();
+        thresholdInt.transform.position = gameObject.transform.position;
+        thresholdInt.transform.position += new Vector3(0f, 2f, -1f);
+        thresholdInt.fontSize = 8;
+        thresholdInt.alignment = TextAlignmentOptions.Center;
+        thresholdInt.text = $"Preferred : {gameObject.GetComponent<Quest>().threshold} {gameObject.GetComponent<Quest>().thresholdStat}";
+    }
+
+    private void RemoveThresholds()
+    {
+        Destroy(thresholdInt.gameObject);
+    }
 
     private void OnMouseEnter()
     {
+        ShowThresholds();
         QuestUIManager.currentQuest = gameObject;
         canGrow = true;
         canShrink = false;
@@ -35,6 +53,7 @@ public class QuestHover : MonoBehaviour
 
     private void OnMouseExit()
     {
+        RemoveThresholds();
         QuestUIManager.currentQuest = QuestUIManager.nullQuest;
         canShrink = true;
         canGrow = false;
@@ -42,6 +61,7 @@ public class QuestHover : MonoBehaviour
     
     private void OnMouseUp()
     {
+        RemoveThresholds();
         questSent = true;
         mainCam.SetActive(true);
         counterCam.SetActive(false);
