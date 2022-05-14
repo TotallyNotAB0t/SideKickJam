@@ -32,7 +32,7 @@ public class Quest : MonoBehaviour
         }
         
         bonus = Random.Range(1, 5);
-        malus = Random.Range(1, 4);
+        malus = Random.Range(0, 4);
         duration = Random.Range(1,4);
         
         setQuestName();

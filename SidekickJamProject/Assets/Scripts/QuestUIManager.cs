@@ -91,7 +91,7 @@ public class QuestUIManager : MonoBehaviour
         }
         bonusText.text = $"{questVals.bonusType} {String.Concat(Enumerable.Repeat("+ ", questVals.bonus))}";
         questText.text = questVals.questName;
-        malusText.text = $"{questVals.malusType} {String.Concat(Enumerable.Repeat("- ", questVals.bonus))}";
+        malusText.text = $"{questVals.malusType} {String.Concat(Enumerable.Repeat("- ", questVals.malus))}";
         durationText.text = $"{questVals.duration} days";
     }
     

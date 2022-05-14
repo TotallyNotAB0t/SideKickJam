@@ -285,7 +285,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.29, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 590583577}
   - {fileID: 209202765}
@@ -3021,7 +3021,7 @@ MonoBehaviour:
   bonusText: {fileID: 1545224255}
   questText: {fileID: 376676541}
   malusText: {fileID: 1862561428}
-  durationText: {fileID: 0}
+  durationText: {fileID: 1186422611}
   parent: {fileID: 1220094935}
   questAlign: {fileID: 458118675}
   questPrefab: {fileID: 8225547018405188209, guid: 0aa308e07a683c2468385fed7a508a2c, type: 3}
@@ -4749,8 +4749,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initPos: {fileID: 624943517}
   counterPos: {fileID: 1856142621}
-  heroSprite: {fileID: 21300000, guid: eb695c2617ccb4542a3e9cbb7b03bc3c, type: 3}
   heroSpeed: 1.44
+  mageSprite: {fileID: 21300000, guid: 002fa200256adbf4fa9ec9aa95ac32e9, type: 3}
+  warriorSprite: {fileID: 21300000, guid: 3160466958dee8543acddf4905810378, type: 3}
+  rangerSprite: {fileID: 21300000, guid: 2a6570c670b9945458beed2682550943, type: 3}
 --- !u!1 &1278456502
 GameObject:
   m_ObjectHideFlags: 0
@@ -5499,6 +5501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+  infoBubble: {fileID: 41977345}
 --- !u!50 &1493616478
 Rigidbody2D:
   serializedVersion: 4
@@ -7445,8 +7448,8 @@ Transform:
   m_GameObject: {fileID: 2048850188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1493616476}
   m_RootOrder: 0
@@ -7491,8 +7494,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: fa51871827459af41afe59f80e3ca32f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7520,7 +7523,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
