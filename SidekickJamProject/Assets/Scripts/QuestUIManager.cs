@@ -58,6 +58,7 @@ public class QuestUIManager : MonoBehaviour
         questVals.GetComponent<Quest>().Randomize(GameBehaviour.Reputation);
         newQuest.transform.SetParent(parent);
         newQuest.transform.position = pos;
+        newQuest.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
         return newQuest;
     }
