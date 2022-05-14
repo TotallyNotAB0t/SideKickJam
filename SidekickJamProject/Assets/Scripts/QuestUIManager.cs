@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class QuestUIManager : MonoBehaviour
 {
-    [SerializeField] private Sprite sprite;
+    [SerializeField] private Sprite lastQuestSprite;
     [SerializeField] private TextMeshProUGUI bonusText, questText, malusText, durationText;
     [SerializeField] private Transform parent;
     [SerializeField] private static Camera mainCam;
@@ -19,6 +19,7 @@ public class QuestUIManager : MonoBehaviour
 
     private static GameObject tmp;
     private static bool isClicked;
+    public static bool lastQuestNow;
 
     private static List<GameObject> availableQuests = new();
     
@@ -55,7 +56,7 @@ public class QuestUIManager : MonoBehaviour
         var newQuest = Instantiate(questPrefab);
         newQuest.AddComponent<Quest>();
         var questVals = newQuest.GetComponent<Quest>();
-        questVals.GetComponent<Quest>().Randomize(GameBehaviour.Reputation);
+        questVals.Randomize(GameBehaviour.Reputation);
         newQuest.transform.SetParent(parent);
         newQuest.transform.position = pos;
         newQuest.GetComponent<SpriteRenderer>().sortingOrder = 1;
@@ -63,17 +64,44 @@ public class QuestUIManager : MonoBehaviour
         return newQuest;
     }
 
+    private GameObject generateLastQuest(Vector3 pos)
+    {
+        var lastQuest = Instantiate(questPrefab);
+        lastQuest.AddComponent<Quest>();
+        var questVals = lastQuest.GetComponent<Quest>();
+        questVals.lastQuest();
+        lastQuest.transform.SetParent(parent);
+        lastQuest.transform.position = pos;
+        lastQuest.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        lastQuest.GetComponent<SpriteRenderer>().sprite = lastQuestSprite;
+        return lastQuest;
+    }
+
     public static void collectClickedQuest(GameObject quest)
     {
         tmp = quest;
         isClicked = true;
+        if (quest.GetComponent<Quest>().questName.Equals("Save the world"))
+        {
+            lastQuestNow = true;
+        }
     }
     
     private void updateAvailableQuests()
     {
         isClicked = false;
         availableQuests.Remove(tmp);
-        availableQuests.Add(GenerateACard(tmp.transform.position));
+        if (GameBehaviour.Reputation > 70)
+        {
+            if (!availableQuests.Find(el => el.GetComponent<Quest>().questName.Equals("Save the world")) && !lastQuestNow)
+            {
+                availableQuests.Add(generateLastQuest(tmp.transform.position));
+            }
+            else availableQuests.Add(GenerateACard(tmp.transform.position));
+        }
+        else
+            availableQuests.Add(GenerateACard(tmp.transform.position));
+
         tmp = null;
     }
 
@@ -91,7 +119,7 @@ public class QuestUIManager : MonoBehaviour
         }
         bonusText.text = $"{questVals.bonusType} {String.Concat(Enumerable.Repeat("+ ", questVals.bonus))}";
         questText.text = questVals.questName;
-        malusText.text = $"{questVals.malusType} {String.Concat(Enumerable.Repeat("- ", questVals.bonus))}";
+        malusText.text = $"{questVals.malusType} {String.Concat(Enumerable.Repeat("- ", questVals.malus))}";
         durationText.text = $"{questVals.duration} days";
     }
     

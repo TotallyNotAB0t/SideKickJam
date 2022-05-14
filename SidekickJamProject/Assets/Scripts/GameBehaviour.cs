@@ -164,8 +164,19 @@ public class GameBehaviour : MonoBehaviour
         foreach (var quest in loggedQuests)
         {
             quest.duration--;
-            if (quest.duration <= 0)
+            if (quest.duration <= 0 && QuestUIManager.lastQuestNow)
             {
+                if (quest.questName.Equals("Save the world") )
+                {
+                    if (CheckQuestCompatibility(quest))
+                    {
+                        //WIN
+                    }
+                    else
+                    {
+                        QuestUIManager.lastQuestNow = false;
+                    }
+                } 
                 quest.active = false;
 
                 switch (quest.bonusType)
