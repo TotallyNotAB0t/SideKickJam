@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class QuestHover : MonoBehaviour
@@ -7,7 +8,12 @@ public class QuestHover : MonoBehaviour
     
     public static GameObject mainCam;
     public static GameObject counterCam;
-    
+
+    private void Awake()
+    {
+        gameObject.transform.localScale = new Vector3(2f, 2f, 2f);
+    }
+
     private void Update()
     {
         if (canShrink)
@@ -48,7 +54,7 @@ public class QuestHover : MonoBehaviour
     
     private void Grow()
     {
-        if(transform.localScale.magnitude < new Vector3(70f, 110f, 70f).magnitude)
+        if(transform.localScale.magnitude < new Vector3(50f, 50f, 50f).magnitude)
         {
             transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
         }
@@ -56,7 +62,7 @@ public class QuestHover : MonoBehaviour
 
     private void Shrink()
     {
-        if(transform.localScale.magnitude > new Vector3(50f, 90f, 50f).magnitude)
+        if(transform.localScale.magnitude > new Vector3(40f, 40f, 40f).magnitude)
         {
             transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
         }
