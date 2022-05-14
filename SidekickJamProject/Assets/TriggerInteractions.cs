@@ -21,7 +21,7 @@ public class TriggerInteractions : MonoBehaviour
 
     public static void RemoveBubble()
     {
-        bubbleParent.transform.localPosition = new Vector3(0f, 0f, 0f);
+        bubbleParent.transform.localPosition = new Vector3(0f, -.85f, 0f);
         bubbleParent.SetActive(false);
     }
 
