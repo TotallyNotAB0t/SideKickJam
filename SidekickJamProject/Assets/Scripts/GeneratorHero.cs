@@ -44,6 +44,7 @@ public class GeneratorHero : MonoBehaviour
     {
         if (!onCounter) return;
         if (!actualHero) return;
+        actualHero.transform.localScale = new Vector3(-1, 1, 1);
         actualHero.transform.position = Vector3.MoveTowards(actualHero.transform.position, initPos.transform.position, heroSpeed * Time.deltaTime);
         if ( Vector3.Distance(actualHero.transform.position, initPos.transform.position) <= 0.01f)
         {
