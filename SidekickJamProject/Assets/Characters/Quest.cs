@@ -68,10 +68,6 @@ public class Quest : MonoBehaviour
                     questName = questsNames.earlyreputation[Random.Range(0, questsNames.earlyreputation.Length)];
                     break;
             }
-
-            var tmp = new List<string> {"str", "intel", "speed"};
-            thresholdStat = tmp[Random.Range(0, tmp.Count)];
-            threshold = Random.Range(0,rep);
         }
         else if (rep <= 30) //MID
         {
@@ -109,6 +105,9 @@ public class Quest : MonoBehaviour
                     break;
             }
         }
+        var tmp = new List<string> {"str", "intel", "speed"};
+        thresholdStat = tmp[Random.Range(0, tmp.Count)];
+        threshold = Random.Range(0,rep);
     }
     
     private string getQuestType()
