@@ -8,11 +8,11 @@ public class GetHeroInformation : MonoBehaviour
 
     public void GetInfo(Hero hero)
     {
-        heroName.SetText(hero.characterName);
-        heroClass.SetText(hero.characterClass);
-        heroHealth.SetText(hero.lives.ToString());
-        heroSTR.SetText(hero.str.ToString());
-        heroINT.SetText(hero.intel.ToString());
-        heroSPE.SetText(hero.spe.ToString());
+        heroName.SetText($"Name : {hero.characterName}");
+        heroClass.SetText($"Class : {hero.characterClass}");
+        heroHealth.SetText($"Health : {hero.lives}");
+        heroSTR.SetText($"Strength : {hero.str}");
+        heroINT.SetText($"Intelligence : {hero.intel}");
+        heroSPE.SetText($"Speed : {hero.spe}");
     }
 }

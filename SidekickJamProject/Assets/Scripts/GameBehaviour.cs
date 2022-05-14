@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GameBehaviour : MonoBehaviour
 {
+    public static int maxHero;
     private static Camera camCounter;
     private static int food, money, looks, reputation = 1, days;
     public static int Food
@@ -58,8 +59,9 @@ public class GameBehaviour : MonoBehaviour
     private GameObject mainCam;
     private GameObject counterCam;
 
-    void Start()
+    private void Start()
     {
+        maxHero = Random.Range(2, 5);
         camCounter = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         using (StreamReader reader = new StreamReader("Assets/Resources/heroes.json"))
         {
@@ -97,20 +99,22 @@ public class GameBehaviour : MonoBehaviour
             moneyPrompt.GetComponent<TextMeshProUGUI>().text = $"Money : {money}";
         if (looksPrompt.activeSelf)
             looksPrompt.GetComponent<TextMeshProUGUI>().text = $"Looks : {looks}";
-        displayUI();
+        DisplayUI();
 
         //Next Day
         if (onBed)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                GeneratorHero.ResetHeroCount();
+                maxHero = Random.Range(2, 5);
                 Days++;
                 Food--;
                 Money--;
                 if (Days % 3 == 0) Looks--;
                 Debug.Log($"Day : {Days}, Food : {Food} , Money : {Money}, Looks : {Looks}");
 
-                advanceQuests();
+                AdvanceQuests();
                 //Stocker days, food, money, reputation, looks,
                 //tableau des quetes données à des heros, "score" (pas encore implémenté),
                 // tableau des quetes que l'on peut passer aux heros (questUIManager.availableQuests)
@@ -155,7 +159,7 @@ public class GameBehaviour : MonoBehaviour
         return true;
     }
 
-    public static void advanceQuests()
+    public static void AdvanceQuests()
     {
         foreach (var quest in loggedQuests)
         {
@@ -203,7 +207,7 @@ public class GameBehaviour : MonoBehaviour
         //incrémenter le score I guess
     }
 
-    private static void displayUI()
+    private static void DisplayUI()
     {
         if (camCounter.isActiveAndEnabled)
         {

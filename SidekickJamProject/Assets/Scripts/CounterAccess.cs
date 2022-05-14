@@ -21,6 +21,7 @@ public class CounterAccess : MonoBehaviour
 
     private void Update()
     {
+        if (GeneratorHero.IsDayOver()) return;
         if (!onCounter) return;
         if (Input.GetKeyDown(KeyCode.E))
         {

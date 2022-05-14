@@ -9,10 +9,22 @@ public class GeneratorHero : MonoBehaviour
     private bool onCounter, onExit;
     public static bool isCounterOpen;
     public GetHeroInformation info;
+    public static int heroCount;
+    public static bool isDayOver;
 
     private void Update()
     {
-        if (isCounterOpen && !actualHero )
+        if (heroCount <= GameBehaviour.maxHero)
+        {
+            isDayOver = false;
+        }
+        else
+        {
+            isDayOver = true;
+        }
+        ResetNewHero();
+        if (!(heroCount <= GameBehaviour.maxHero)) return;
+        if (isCounterOpen && !actualHero)
         {
             InstantiateHero();
         }
@@ -26,7 +38,17 @@ public class GeneratorHero : MonoBehaviour
         {
             MoveHeroBackwards();
         }
-        ResetNewHero();
+        
+    }
+
+    public static bool IsDayOver()
+    {
+        return isDayOver;
+    }
+
+    public static void ResetHeroCount()
+    {
+        heroCount = 0;
     }
 
     private void MoveHero()
@@ -54,12 +76,18 @@ public class GeneratorHero : MonoBehaviour
 
     private void ResetNewHero()
     {
+        if (!(heroCount <= GameBehaviour.maxHero))
+        {
+            QuestHover.questSent = false;
+            onCounter = false;
+            onExit = false;
+            Destroy(actualHero);
+        }
         if (!onExit) return;
         QuestHover.questSent = false;
         onCounter = false;
         onExit = false;
         Destroy(actualHero);
-        InstantiateHero();
     }
 
     private void InstantiateHero()
@@ -74,5 +102,6 @@ public class GeneratorHero : MonoBehaviour
         newHero.GetComponent<Hero>().GetAttributes();
         actualHero = newHero;
         info.GetInfo(newHero.GetComponent<Hero>());
+        heroCount++;
     }
 }

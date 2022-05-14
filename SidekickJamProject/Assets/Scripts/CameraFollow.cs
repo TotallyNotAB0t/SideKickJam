@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Vector3 offset = new Vector3(4f, 3f, 0);
     
     //TODO limiter camera
-    void LateUpdate()
+    private void LateUpdate()
     {
         Vector3 desiredPosition;
         float velocity = Input.GetAxis("Horizontal");
