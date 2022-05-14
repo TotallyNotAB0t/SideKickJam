@@ -6,7 +6,8 @@
     "Cook me a meal",
     "Hunt 2 deers",
     "Catch 5 rabbits",
-    "Help me open the pickle jar"
+    "Help me open the pickle jar",
+    "There, an emerald, go get some food from the villagers"
   ],
   "earlymoney": [
     "Catch the guy who stole my wallet",
@@ -35,7 +36,8 @@
   ],
   "midfood": [
     "Kill the alpha rabbit",
-    "Bring back a souvenir from the pork eating contest"
+    "Bring back a souvenir from the pork eating contest",
+    "Eat a cactus"
   ],
   "midmoney": [
     "Teach algebra to angels",

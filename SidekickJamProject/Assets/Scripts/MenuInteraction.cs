@@ -11,4 +11,9 @@ public class MenuInteraction : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void BackToMenu()
+    {
+        SceneBehavior.GoToScene("MainMenu");
+    }
 }

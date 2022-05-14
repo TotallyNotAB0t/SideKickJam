@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TMPro;
+using Unity.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class GameBehaviour : MonoBehaviour
@@ -45,13 +47,14 @@ public class GameBehaviour : MonoBehaviour
         get => reputation;
     }
 
-    private bool alive;
-    
     [SerializeField] private int difficulty;
     [SerializeField] private GameObject foodPrompt;
     [SerializeField] private GameObject moneyPrompt;
     [SerializeField] private GameObject looksPrompt;
-    
+
+    [SerializeField] private GameObject winUI, lossUI, menuUI;
+    private static bool won;
+
     private bool onBed = false;
     private static List<Quest> loggedQuests = new();
     
@@ -63,7 +66,7 @@ public class GameBehaviour : MonoBehaviour
         camCounter = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         using (StreamReader reader = new StreamReader("Assets/Resources/heroes.json"))
         {
-            Hero.heroValues =JsonUtility.FromJson<Hero.heroJson>(reader.ReadToEnd());
+            Hero.heroValues = JsonUtility.FromJson<Hero.heroJson>(reader.ReadToEnd());
         }
 
         days = 1;
@@ -71,7 +74,7 @@ public class GameBehaviour : MonoBehaviour
         money = 4;
         looks = 3;
         reputation = 2;
-        alive = true;
+        
         mainCam = GameObject.FindWithTag("MainCamera");
         counterCam = GameObject.FindWithTag("SecondaryCamera");
         if (counterCam)
@@ -87,7 +90,8 @@ public class GameBehaviour : MonoBehaviour
         //Check LoseCon
         if (money < 0 || food < 0 || looks < 0)
         {
-            alive = false;
+            menuUI.SetActive(true);
+            lossUI.SetActive(true);
         }
         
         //UI stat
@@ -111,6 +115,12 @@ public class GameBehaviour : MonoBehaviour
                 Debug.Log($"Day : {Days}, Food : {Food} , Money : {Money}, Looks : {Looks}");
 
                 advanceQuests();
+
+                if (won)
+                {
+                    menuUI.SetActive(true);
+                    winUI.SetActive(true);
+                }
                 //Stocker days, food, money, reputation, looks,
                 //tableau des quetes données à des heros, "score" (pas encore implémenté),
                 // tableau des quetes que l'on peut passer aux heros (questUIManager.availableQuests)
@@ -166,7 +176,7 @@ public class GameBehaviour : MonoBehaviour
                 {
                     if (CheckQuestCompatibility(quest))
                     {
-                        //WIN
+                        won = true;
                     }
                     else
                     {
