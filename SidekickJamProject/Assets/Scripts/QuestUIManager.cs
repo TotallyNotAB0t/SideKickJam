@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -13,40 +15,37 @@ public class QuestUIManager : MonoBehaviour
     [SerializeField] private GameObject questPrefab;
     public static GameObject currentQuest;
     public static GameObject nullQuest;
+    
+    
+    private static GameObject tmp;
+    private static bool isClicked;
 
-    private List<GameObject> availableQuests = new();
-
-    // TODO faire la deletion de l'objet selectionné (ptet dans le HoverQuest) puis recharger une quete a l'endroit de l'objet cliqué
+    private static List<GameObject> availableQuests = new();
+    
     private void Start()
     {
-        using (StreamReader reader = new StreamReader("Assets/Resources/quests.json"))
+        using (var reader = new StreamReader("Assets/Resources/quests.json"))
         {
             Quest.questsNames = JsonUtility.FromJson<Quest.questJson>(reader.ReadToEnd());
         }
         
-        Debug.Log(Quest.questsNames);
-        
         GenerateCards();
     }
 
-    private void SwitchQuest(GameObject questObj)
+    private void Update()
     {
-        Destroy(currentQuest);
-        currentQuest = questObj;
-    }
+        DisplayQuest();
 
-    private void DisplayQuest()
-    {
-        var questVals = currentQuest.GetComponent<Quest>();
-        
-        bonusText.text = $"Bonus : {questVals.bonus}";
-        questText.text = questVals.questName;
-        malusText.text = $"Malus : {questVals.malus}";
+        if (isClicked)
+        {
+            updateAvailableQuests();
+        }
     }
 
     private void GenerateCards()
     {
-        for (float i = questAlign.transform.localPosition.x - 5f; i < 10f; i += 5f)
+        availableQuests.Clear();
+        for (float i = questAlign.transform.localPosition.x - 6f; i <= 6.1f; i += 3f)
         {
             availableQuests.Add(GenerateACard(new Vector3(questAlign.transform.position.x + i, questAlign.transform.position.y,0f)));
         }
@@ -62,6 +61,36 @@ public class QuestUIManager : MonoBehaviour
         newQuest.transform.position = pos;
 
         return newQuest;
+    }
+
+    public static void collectClickedQuest(GameObject quest)
+    {
+        tmp = quest;
+        isClicked = true;
+    }
+    
+    private void updateAvailableQuests()
+    {
+        isClicked = false;
+        availableQuests.Remove(tmp);
+        availableQuests.Add(GenerateACard(tmp.transform.position));
+        tmp = null;
+    }
+
+    private void DisplayQuest()
+    {
+        if (currentQuest == null) return;
+        var questVals = currentQuest.GetComponent<Quest>();
+        if (questVals == null)
+        {
+            bonusText.text = "";
+            questText.text = "";
+            malusText.text = "";
+            return;
+        }
+        bonusText.text = $"{questVals.bonusType} {String.Concat(Enumerable.Repeat("+ ", questVals.bonus))}";
+        questText.text = questVals.questName;
+        malusText.text = $"{questVals.malusType} {String.Concat(Enumerable.Repeat("- ", questVals.bonus))}";
     }
     
     public static void exit()

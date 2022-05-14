@@ -23,7 +23,7 @@ public class GeneratorHero : MonoBehaviour
 
     private void MoveHero()
     {
-        if (actualHero)
+        if (actualHero && !onCounter)
         {
             actualHero.transform.position = Vector3.MoveTowards(actualHero.transform.position, counterPos.transform.position, heroSpeed * Time.deltaTime);
             if ( Vector3.Distance(actualHero.transform.position, counterPos.transform.position) <= 0.01f)

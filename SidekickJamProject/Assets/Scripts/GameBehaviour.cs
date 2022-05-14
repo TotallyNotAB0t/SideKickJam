@@ -53,6 +53,9 @@ public class GameBehaviour : MonoBehaviour
     
     private bool onBed = false;
     private static List<Quest> loggedQuests = new();
+    
+    private GameObject mainCam;
+    private GameObject counterCam;
 
     void Start()
     {
@@ -67,7 +70,14 @@ public class GameBehaviour : MonoBehaviour
         looks = 3;
         reputation = 2;
         alive = true;
-        GameObject.FindWithTag("MainCamera").SetActive(true);
+        mainCam = GameObject.FindWithTag("MainCamera");
+        counterCam = GameObject.FindWithTag("SecondaryCamera");
+        if (counterCam)
+        {
+            counterCam.SetActive(false);
+        }
+        QuestHover.mainCam = mainCam;
+        QuestHover.counterCam = counterCam;
     }
 
     private void Update()
@@ -85,6 +95,7 @@ public class GameBehaviour : MonoBehaviour
             moneyPrompt.GetComponent<TextMeshProUGUI>().text = $"Money : {money}";
         if (looksPrompt.activeSelf)
             looksPrompt.GetComponent<TextMeshProUGUI>().text = $"Looks : {looks}";
+        displayUI();
 
         //Next Day
         if (onBed)
@@ -112,7 +123,14 @@ public class GameBehaviour : MonoBehaviour
         {
             reputation++;
         }
-        else reputation--;
+        else
+        {
+            if (quest.heroes[0].ego)
+            {
+                reputation -= 3;
+            }
+            else reputation--;
+        }
     }
 
     private static bool CheckQuestCompatibility(Quest quest)
@@ -181,6 +199,11 @@ public class GameBehaviour : MonoBehaviour
         loggedQuests = loggedQuests.Where(el => el.active).ToList();
         
         //incrémenter le score I guess
+    }
+
+    private static void displayUI()
+    {
+        GameObject.FindWithTag("DayCount").GetComponent<TextMeshProUGUI>().text = days.ToString();
     }
     
     

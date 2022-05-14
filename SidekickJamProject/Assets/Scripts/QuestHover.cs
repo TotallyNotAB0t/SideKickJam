@@ -5,20 +5,9 @@ public class QuestHover : MonoBehaviour
     private bool canGrow, canShrink;
     
     
-    private GameObject mainCam;
-    private GameObject counterCam;
-
-    //A deplacer ailleurs : nullreference parce que chaque quete possède quest hover, on a qu'une camera
-    private void Start()
-    {
-        mainCam = GameObject.FindWithTag("MainCamera");
-        counterCam = GameObject.FindWithTag("SecondaryCamera");
-        if (counterCam)
-        {
-            counterCam.SetActive(false);
-        }
-    }
-
+    public static GameObject mainCam;
+    public static GameObject counterCam;
+    
     private void Update()
     {
         if (canShrink)
@@ -44,25 +33,23 @@ public class QuestHover : MonoBehaviour
         canShrink = true;
         canGrow = false;
     }
-
-    //Nullreference ?
+    
     private void OnMouseUp()
     {
-        mainCam.gameObject.SetActive(true);
-        if (counterCam)
-        {
-            counterCam.gameObject.SetActive(false);
-        }
+        mainCam.SetActive(true);
+        counterCam.SetActive(false);
         
         GetComponent<Quest>().heroes.Add(GameObject.FindWithTag("Hero").GetComponent<Hero>());
         GameBehaviour.AddLoggedQuests(this.GetComponent<Quest>());
+        QuestUIManager.collectClickedQuest(this.gameObject);
+        Destroy(this.gameObject);
     }
     
     private void Grow()
     {
         if(transform.localScale.magnitude < new Vector3(70f, 110f, 70f).magnitude)
         {
-            transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
         }
     }
 
@@ -70,7 +57,7 @@ public class QuestHover : MonoBehaviour
     {
         if(transform.localScale.magnitude > new Vector3(50f, 90f, 50f).magnitude)
         {
-            transform.localScale -= new Vector3(0.5f, 0.5f, 0.5f);
+            transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
         }
     }
 }

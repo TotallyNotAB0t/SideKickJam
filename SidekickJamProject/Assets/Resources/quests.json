@@ -5,7 +5,8 @@
     "Collect 10 alligator pears",
     "Cook me a meal",
     "Hunt 2 deers",
-    "Catch 5 rabbits"
+    "Catch 5 rabbits",
+    "Help me open the pickle jar"
   ],
   "earlymoney": [
     "Catch the guy who stole my wallet",
@@ -22,8 +23,7 @@
     "Mow the loan",
     "Water the flowers",
     "Find a logo for the shop",
-    "Install fences around the shop",
-    ""
+    "Install fences around the shop"
   ],
   "earlyreputation": [
     "Glue ads in the streets",
@@ -42,7 +42,8 @@
     "Beat vampires at a blood pudding eating game",
     "Make a shady charity event",
     "Find out if the sea is actually mermaid tears",
-    "Decipher the code for the Lich's lair"
+    "Decipher the code for the Lich's lair",
+    "Find a way to remove the narrator in your head"
   ],
   "midlooks": [
     "Clean the rooftiles",
@@ -65,8 +66,9 @@
     "Crate a vaudeville"
   ],
   "latelooks": [
-    "Bring a familiy of frogs for the pond",
-    "Steal the sand witches cauldron"
+    "Bring a family of frogs for the pond",
+    "Steal the sand witches cauldron",
+    "Steal the lost arch for my new dresser"
   ],
   "latereputation": [
     "Ally yousely with the mage's guild",

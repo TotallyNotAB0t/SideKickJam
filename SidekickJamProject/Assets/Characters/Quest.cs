@@ -31,18 +31,30 @@ public class Quest : MonoBehaviour
             malusType = getQuestType();
         }
         
-        bonus = Random.Range(0, 4);
-        malus = Random.Range(0, 3);
-        duration = Random.Range(0,3);
+        bonus = Random.Range(1, 5);
+        malus = Random.Range(1, 4);
+        duration = Random.Range(1,4);
         
-        //En fonction de la reputation et du bonusType, la base de textes est pas la meme
         setQuestName();
+    }
+
+    public void lastQuest()
+    {
+        bonusType = "reputation";
+        malusType = "money";
+
+        bonus = 3;
+        malus = 3;
+        duration = 5;
+
+        questName = "Save the world";
+        threshold = 70;
     }
     
     private void setQuestName()
     {
         var rep = GameBehaviour.Reputation;
-        if (rep < 15) // EARLY
+        if (rep <= 15) // EARLY
         {
             switch (bonusType)
             {
@@ -64,7 +76,7 @@ public class Quest : MonoBehaviour
             thresholdStat = tmp[Random.Range(0, tmp.Count)];
             threshold = Random.Range(0,rep);
         }
-        else if (rep < 30) //MID
+        else if (rep <= 30) //MID
         {
             switch (bonusType)
             {
@@ -82,7 +94,7 @@ public class Quest : MonoBehaviour
                     break;
             }
         }
-        else if (rep < 55) //LATE
+        else if (rep <= 55) //LATE
         {
             switch (bonusType)
             {
