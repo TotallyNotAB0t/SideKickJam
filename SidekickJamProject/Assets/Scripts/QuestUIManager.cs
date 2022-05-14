@@ -8,7 +8,7 @@ using UnityEngine;
 public class QuestUIManager : MonoBehaviour
 {
     [SerializeField] private Sprite sprite;
-    [SerializeField] private TextMeshProUGUI bonusText, questText, malusText;
+    [SerializeField] private TextMeshProUGUI bonusText, questText, malusText, durationText;
     [SerializeField] private Transform parent;
     [SerializeField] private static Camera mainCam;
     [SerializeField] private GameObject questAlign;
