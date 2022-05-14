@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class Quest : MonoBehaviour
