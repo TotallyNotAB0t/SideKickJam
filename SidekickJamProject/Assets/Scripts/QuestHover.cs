@@ -5,7 +5,7 @@ public class QuestHover : MonoBehaviour
 {
     private bool canGrow, canShrink;
     public static bool questSent;
-    
+
     public static GameObject mainCam;
     public static GameObject counterCam;
 

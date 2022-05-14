@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class hoverBook : MonoBehaviour
 {
-
     private bool onIt;
     [SerializeField] private GameObject bookUI;
     

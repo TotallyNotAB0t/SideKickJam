@@ -28,7 +28,7 @@ public class CounterAccess : MonoBehaviour
             {
                 GeneratorHero.isCounterOpen = true;
             }
-            else
+            else if(!QuestHover.questSent)
             {
                 mainCam.gameObject.SetActive(false);
                 counterCamera.SetActive(true);
