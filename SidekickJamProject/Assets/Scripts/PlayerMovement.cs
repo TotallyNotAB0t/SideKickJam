@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 0.1f;
+
+    private bool facesRight;
     
     void Update()
     {

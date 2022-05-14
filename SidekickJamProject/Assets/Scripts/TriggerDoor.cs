@@ -34,6 +34,8 @@ public class TriggerDoor : MonoBehaviour
         {
             if (this.transform.position == doorLink.Item1) player.transform.position = doorLink.Item2;
             else player.transform.position = doorLink.Item1;
+            
+            player.transform.Translate(0,-.45f,0);
         }
     }
 }

@@ -86,11 +86,13 @@ public class QuestUIManager : MonoBehaviour
             bonusText.text = "";
             questText.text = "";
             malusText.text = "";
+            durationText.text = "";
             return;
         }
         bonusText.text = $"{questVals.bonusType} {String.Concat(Enumerable.Repeat("+ ", questVals.bonus))}";
         questText.text = questVals.questName;
         malusText.text = $"{questVals.malusType} {String.Concat(Enumerable.Repeat("- ", questVals.bonus))}";
+        durationText.text = $"{questVals.duration} days";
     }
     
     public static void exit()
