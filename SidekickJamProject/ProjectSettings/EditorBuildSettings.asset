@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapScene.unity
     guid: bfeda40a75e30154c8379ac5e1afe130
-  - enabled: 1
-    path: Assets/Scenes/Counter.unity
-    guid: 0a77099792b5f12479cfcf72e1ea75ff
   m_configObjects: {}

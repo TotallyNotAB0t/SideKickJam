@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class GameBehaviour : MonoBehaviour
 {
+    public GameObject COUNTERCAMOBJ;
     public static int maxHero;
     private static Camera camCounter;
     private static int food, money, looks, reputation = 1, days;
@@ -78,7 +79,7 @@ public class GameBehaviour : MonoBehaviour
         reputation = 2;
         
         mainCam = GameObject.FindWithTag("MainCamera");
-        counterCam = GameObject.FindWithTag("SecondaryCamera");
+        counterCam = COUNTERCAMOBJ;
         if (counterCam)
         {
             counterCam.SetActive(false);

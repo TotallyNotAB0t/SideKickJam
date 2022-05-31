@@ -8,6 +8,11 @@ public class SceneBehavior : MonoBehaviour
         SceneManager.LoadScene(nameScene);
     }
 
+    public static void GoToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public static void ExitMenu()
     {
         SceneManager.LoadScene("MapScene");
